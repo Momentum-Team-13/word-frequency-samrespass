@@ -22,7 +22,7 @@ def print_word_freq(file):
                 no_punc = string.replace(puncs, '')
     make_dic = str.split(no_punc)
     for lyrics in sorted(set(make_dic)):
-        print(lyrics, make_dic.count(lyrics))
+        print("| |", lyrics, "|", make_dic.count(lyrics))
 
 
 if __name__ == "__main__":
