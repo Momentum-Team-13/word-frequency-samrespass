@@ -1,4 +1,5 @@
 
+import string
 
 STOP_WORDS = [
     'a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from', 'has', 'he',
@@ -16,13 +17,13 @@ def print_word_freq(file):
     print (f"Your file is: {file}")
     with open(file) as open_file:
         read_file = open_file.read()
-        for stop in STOP_WORDS:
-            string = read_file.replace(stop, '').lower()
-            for puncs in STOP_PUNC:
-                no_punc = string.replace(puncs, '')
-    make_dic = str.split(no_punc)
-    for lyrics in sorted(set(make_dic)):
-        print("| |", lyrics, "|", make_dic.count(lyrics))
+    new_read = read_file.translate(str.maketrans('','', string.punctuation)).lower()
+    new_read = str.strip(new_read)
+    new_read = str.split(new_read)
+    new_read = [word for word in new_read if word not in STOP_WORDS]
+    print(new_read)
+    for sorta in sorted(set(new_read)):
+        print("| |", sorta, "|", new_read.count(sorta))
 
 
 if __name__ == "__main__":
