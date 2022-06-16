@@ -21,7 +21,6 @@ def print_word_freq(file):
     new_read = str.strip(new_read)
     new_read = str.split(new_read)
     new_read = [word for word in new_read if word not in STOP_WORDS]
-    print(new_read)
     for sorta in sorted(set(new_read)):
         print("| |", sorta, "|", new_read.count(sorta))
 
