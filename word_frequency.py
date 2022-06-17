@@ -7,9 +7,7 @@ STOP_WORDS = [
     'will', 'with'
 ]
 
-STOP_PUNC = [
-    ',', '.',',','?',
-]
+
 
 
 def print_word_freq(file):
@@ -18,11 +16,11 @@ def print_word_freq(file):
     with open(file) as open_file:
         read_file = open_file.read()
     new_read = read_file.translate(str.maketrans('','', string.punctuation)).lower()
-    new_read = str.strip(new_read)
-    new_read = str.split(new_read)
-    new_read = [word for word in new_read if word not in STOP_WORDS]
-    for sorta in sorted(set(new_read)):
-        print("| |", sorta, "|", new_read.count(sorta))
+    make_string = str.strip(new_read)
+    split_string = str.split(make_string)
+    remove_stop = [word for word in split_string if word not in STOP_WORDS]
+    for sorta in sorted(set(remove_stop)):
+        print(f"{sorta:>15} | {remove_stop.count(sorta)} {'*' * remove_stop.count(sorta)}")
 
 
 if __name__ == "__main__":
